@@ -33,4 +33,4 @@ Tried to get home screen image animation on scroll working and thought I followe
 
 Walkthrough of all user stories:
 
-<img src="http://i.imgur.com/jMPtHbY.gif">
+<img src="http://i.imgur.com/FXuh7v2.gif">
