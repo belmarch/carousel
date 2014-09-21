@@ -16,6 +16,11 @@ class SigninViewController: UIViewController, UIAlertViewDelegate  {
     @IBOutlet weak var signinButton: UIButton!
 
     @IBOutlet weak var containerView: UIView!
+    
+    @IBOutlet weak var container2View: UIView!
+    
+    @IBOutlet weak var imageView: UIImageView!
+    
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
@@ -41,28 +46,29 @@ class SigninViewController: UIViewController, UIAlertViewDelegate  {
 
     @IBAction func onSignin(sender: AnyObject) {
         
+        
     if self.emailField.text == "" && self.passwordField.text == "" {
         
          UIAlertView(title: "Oops", message: "Please enter a vaild email and password", delegate: nil, cancelButtonTitle: "OK").show()
             }
             
-    else if self.emailField.text == "tim" && self.passwordField.text == "y" {
-        
+    else if self.emailField.text == "tim@thecodepath.com" && self.passwordField.text == "password" {
         loadingView.startAnimating()
         delay(2, closure: { () -> () in
+            self.loadingView.stopAnimating()
+            self.performSegueWithIdentifier("signinSegue", sender: self)
         })
-        self.loadingView.stopAnimating()
-        self.performSegueWithIdentifier("signinSegue", sender: self)
+       
     
     }
         
     else {
         loadingView.startAnimating()
         delay(2, closure: { () -> () in
+            self.loadingView.stopAnimating()
+            UIAlertView(title: "Oops", message: "Wrong email or password", delegate: nil, cancelButtonTitle: "OK").show()
         })
-        
-        self.loadingView.stopAnimating()
-        UIAlertView(title: "Oops", message: "Wrong email or password", delegate: nil, cancelButtonTitle: "OK").show()
+   
         }
     }
     
@@ -77,10 +83,14 @@ class SigninViewController: UIViewController, UIAlertViewDelegate  {
     
     func keyboardWillShow(notification: NSNotification!) {
         containerView.frame.origin.y=containerView.frame.origin.y-200
+        container2View.frame.origin.y=container2View.frame.origin.y-75
+        imageView.frame.origin.y=imageView.frame.origin.y-200
     }
     
     func keyboardWillHide(notification: NSNotification!) {
         containerView.frame.origin.y=containerView.frame.origin.y+200
+        container2View.frame.origin.y=container2View.frame.origin.y+75
+        imageView.frame.origin.y=imageView.frame.origin.y+200
     }
     
     @IBAction func onTap(sender: AnyObject) {
